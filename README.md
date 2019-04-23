@@ -18,3 +18,40 @@
 
 ![Schematic Diagram](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api/_static/architecture.png?view=aspnetcore-2.2)
 
+## Create Web Project
+
+```powershell
+dotnet new webapi -o ToDoApi
+code -r ToDoApi
+```
+
+## Test API
+
+Project template creates a `values` API. Call `GET` method to test app.
+
+## Add Model class
+
+*Model*: Set of classes that represent the data the app manages.
+
+`Id`: Property functioning as the unique key in a relational database.
+
+`Models`: Folder used by convention.
+
+## Add databse context
+
+*Database context*: Main class that coordinates Entity Framework functionality for data model.
+
+Create by deriving from `Microsoft.EntityFrameworkCore.DbContext` class.
+
+## Register database context
+
+For ASP.NET Core, services like DB context must be registered with the [dependency injection (DI)](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2) container. The container provides the service to controllers.
+
+- Remove unused `using` declarations
+- Add database context to DI container
+- Specify database context used (in-memory database)
+
+## Add a controller
+
+- Define API controller class without methods
+- Decoreate class with `[ApiController]`
